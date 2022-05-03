@@ -11,26 +11,23 @@ export CLICOLOR=1
 alias k=kubectl
 alias kns=kubens
 alias kc=kubectx
+alias leks="aws eks list-clusters --query 'clusters[*]|[0]' --output text"
+alias mtr="sudo /usr/local/sbin/mtr -z4rwc100"
+alias docker-run-prev-container='prev_container_id="$(docker ps -aq | head -n1)" && docker commit "$prev_container_id" "prev_container/$prev_container_id" && docker run -it --entrypoint=bash "prev_container/$prev_container_id"'
 
 #
 # paths
 #
 
 export GOPATH="${HOME}"
-NPM_PACKAGES="${HOME}/.npm-packages"
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-export PATH="${PATH}:${GOPATH}/bin:${HOME}/.cargo/bin:$NPM_PACKAGES/bin"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="${HOME}/Library/Python/3.8/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="${PATH}:${GOPATH}/bin"
 
 #
 # nvm
 #
 
 export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 #
 # Miscellaneous
@@ -47,4 +44,3 @@ lg()
             rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
 }
-

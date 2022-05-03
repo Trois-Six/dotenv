@@ -1,17 +1,5 @@
-## This file must be run before other .zsh config
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export ZPLUG_HOME=${HOME}/src/github.com/zplug/zplug
-source ${ZPLUG_HOME}/init.zsh
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 # Let zplug manage zplug
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
@@ -33,7 +21,7 @@ zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
-#zplug "plugins/nvm", from:oh-my-zsh
+zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
@@ -43,9 +31,12 @@ zplug "plugins/terraform", from:oh-my-zsh
 zplug "plugins/ansible", from:oh-my-zsh
 zplug "plugins/adb", from:oh-my-zsh
 zplug "plugins/aws", from:oh-my-zsh
+zplug "plugins/gcloud", from:oh-my-zsh
+zplug "dmakeienko/azcli", from:oh-my-zsh
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/screen", from:oh-my-zsh
 zplug "plugins/vscode", from:oh-my-zsh
+zplug "plugins/rust", from:oh-my-zsh
 
 # Theme
 zplug romkatv/powerlevel10k, as:theme, depth:1
@@ -60,3 +51,4 @@ zplug romkatv/powerlevel10k, as:theme, depth:1
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
